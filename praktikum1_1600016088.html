@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas HTML: My First Canvas HTML App</title>
+</head>
+<style type="text/css">
+	canvas {
+		background-color: lightblue;
+		border: 1px solid black;
+	}
+</style>
+<body>
+<canvas width="800" height="450" id="canvas"></canvas>
+<script type="text/javascript">
+	 var c=document.getElementById('canvas');
+	 var ctx=c.getContext('2d');
+	 
+	 //lingkaran merah
+	 ctx.beginPath();
+	 ctx.lineWidth = 15;
+     ctx.strokeStyle = "white";
+	 ctx.arc(405, 235, 150, 8, 40 * Math.PI);
+     ctx.stroke();
+     ctx.fillStyle = "darkred";
+     ctx.fill();
+	 
+	 //lingkaran orange
+	 ctx.beginPath();
+	 ctx.arc(405,235,100,8, 40 * Math.PI);
+	 ctx.fillStyle = "orange";
+	 ctx.fill();
+	 
+	 //segi empat
+	 ctx.beginPath();
+	 ctx.lineWidth = 15;
+     ctx.strokeStyle = "white";
+	 ctx.rect(365, 200, 80, 80);
+     ctx.stroke();
+     ctx.fillStyle = "rgb(100,100,100,1)";
+     ctx.fill();
+	 
+	 //segitiga1
+	 ctx.beginPath();
+	 ctx.moveTo(50, 225);
+	 ctx.lineTo(150, 120);
+	 ctx.lineTo(150, 330);
+	 ctx.fillStyle = "#228B22";
+	 ctx.fill();
+	 
+	 //segitiga2
+	 ctx.beginPath()
+	 ctx.moveTo(750, 225);
+	 ctx.lineTo(650, 120);
+	 ctx.lineTo(650, 330);
+	 ctx.fillStyle = "#228B22";
+	 ctx.fill();
+</script>
+</body>
+</html>
