@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <title>puzzle</title>
+    <style>
+    .semua{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    }
+    .gambar{
+    float: left;
+    }
+    .gambar img{
+    width: 400px;
+    height: 400px;
+    border: 2px solid black;
+    opacity: .5;
+    }
+    table{
+    float: left;
+    position: absolute;
+    }
+    table div{
+    border: solid 1px gray;
+    }
+    .kotak{
+    width: 200px;
+    height: 200px;
+    }
+    .kotak img{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    }
+    .k11{
+    clip: rect(0px, 200px, 200px, 0px);
+    }
+    .k12{
+    clip: rect(0px, 400px, 200px, 200px);
+    margin-left: -200px;
+    }
+    .k21{
+    clip: rect(200px, 200px, 400px, 0px);
+    margin-top: -200px;
+    }
+    .k22{
+    clip: rect(200px, 400px, 400px, 200px);
+    margin-top: -200px;
+    margin-left: -200px;
+    }
+    </style>
+    <script type="text/javascript">
+    function allowDrop(ev) {
+    ev.preventDefault();
+    }
+
+    function drag(ev) {
+    // Fungsi untuk menarik gambar
+    ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+    // Fungsi untuk menurunkan gambar ke tempatnya..
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var u = ev.target.id;
+    var i = u.substr(0,1);
+    //Gambar harus memiliki id awalan "g". Jika konten drag iyalah G, maka tidak dilakukan pertukaran data
+    if (i!="g") {
+    	ev.target.appendChild(document.getElementById(data));
+    };
+}
+    </script>
+</head>
+<body>
+    <div class="semua"></div>
+    <div class="gambar">
+        <img src="saiki.jpg">
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>
+                <div class="kotak" id="d1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </td>
+            <td>
+                <div class="kotak" id="d2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                <div class="kotak" id="b1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img id="g4" draggable="true" ondragstart="drag(event)" class="k22" src="saiki.jpg">
+                </div>
+            </td>
+            <td>
+                <div class="kotak" id="b2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img id="g3" draggable="true" ondragstart="drag(event)" class="k21" src="saiki.jpg">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="kotak" id="d3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </td>
+            <td>
+                <div class="kotak" id="d4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </td>
+            <td></td>
+            <td>
+                <div class="kotak" id="b3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img id="g2" draggable="true" ondragstart="drag(event)" class="k12" src="saiki.jpg">
+                </div>
+            </td>
+            <td>
+                <div class="kotak" id="b4" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <img id="g1" draggable="true" ondragstart="drag(event)" class="k11" src="saiki.jpg">
+                </div>
+            </td>
+
+        </tr>
+    </table>
+</body>
+</html>
