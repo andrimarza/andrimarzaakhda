@@ -1,0 +1,78 @@
+
+<html>
+
+<head>
+    <title>Tugas Akhir Mulon</title>
+</head>
+<style style="text/css">
+            body {
+            background: url();
+            z-index: 50;
+            }
+            #Orang {
+                height: 150px;
+                width: 110px;
+                background-image: url(karakter.png);
+                animation: lari 1s steps(8) infinite;
+            }
+
+            @keyframes r{
+                 0%{background-position: 0px 0px;}
+                 100%{background-position: -864px 0px;}
+            }
+            @keyframes l{
+                 0%{background-position: -864px 140px;}
+                 100%{background-position: 0px 140px;}
+            }
+</style>
+<body onload="gambar()">
+    Salju Biru Akan Mengikuti Orang Kemanapun Pergi.
+    Ada lagunya, bisa diputar di Microsoft Edge
+<div id="Orang">
+    <canvas id="canvas"></canvas>
+<center>
+    <audio src="song.mp3" autoplay="autoplay">
+    </audio>
+</center>
+<script type="text/javascript">
+function gambar() {
+                var drawing = document.getElementById("canvas");
+                var s = drawing.getContext('2d');
+
+                s.beginPath();
+                s.arc(500,250,150,0,Math.PI*2, true);
+                s.strokeStyle = "#FFFFFF";
+                s.stroke();
+                s.fillStyle = "rgba(200,0,0,100)";
+                s.fill();
+                s.lineWidth = "15";
+                s.closePath();
+            }
+            var Orang= document.getElementById('Orang');
+            var langkah=0;
+            document.addEventListener('keydown', function(event){
+                var keyPress= String.fromCharCode(event.keyCode);
+                if(keyPress=="D"){
+                    langkah+=10;
+                    Orang.style.transform="translateX("+langkah+"px)";
+                    Orang.style.animation='r 1s steps(8) infinite';
+                }else if(keyPress=="A"){
+                    langkah-=10;
+                    Orang.style.transform="translateX("+langkah+"px)";
+                    Orang.style.animation='l 1s steps(8) infinite';
+                }
+            });
+
+            document.addEventListener('keyup', function(event){
+                Orang.style.animationPlayState="paused";
+            });
+
+window.onload = function(){
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+};
+</script>
+<script src="salju.js"></script>
+</div>
+</body>
+</html>
